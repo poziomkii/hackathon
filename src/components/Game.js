@@ -6,6 +6,7 @@ import {
   CircularProgress,
   CircularProgressLabel,
 } from "@chakra-ui/react";
+import MiniGameCountries from "./MiniGameCountries";
 
 class Game extends React.Component {
   constructor(props) {
@@ -30,12 +31,12 @@ class Game extends React.Component {
     ]
     return (
       <div className="game">
-        <Heading>Let's get to know each other :)</Heading>
+        <Heading as='h4' size='md'>Let's get to know each other :)</Heading>
         <div className="game-body">
           {stages[this.state.stage]()}
         </div>
         <div className="game-progress">
-          <CircularProgress size='3em' value={40} color="blue.400">
+          <CircularProgress size='3em' value={40} color="blue.600">
             <CircularProgressLabel className='progress-label'>40%</CircularProgressLabel>
           </CircularProgress>
         </div>

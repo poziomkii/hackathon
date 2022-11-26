@@ -9,11 +9,17 @@
 
 .game-progress {
     display: flex;
-    justify-content: start;
-    padding-left: 3em;
-    padding-bottom: 3em;
+    justify-content: flex-start;
+    padding-left: 6em;
+    padding-bottom: 6em;
+    background-color: rgb(244, 244, 244);
 }
 
 .game-progress .progress-label {
     font-size: 0.7em;
+}
+
+.game-body {
+    background-color: rgb(244, 244, 244);
+    padding-bottom: 15em;
 }
