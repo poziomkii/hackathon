@@ -1,0 +1,19 @@
+.css-gmuwbf {
+    height: 30em;
+    gap: 20em;
+    padding-top: 3em;
+    background-color: rgb(244, 244, 244);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.css-gmuwbf .chakra-stack {
+    gap: 10em;
+    padding-top: 3em;
+    padding-left: 3em;
+    padding-right: 3em;
+    background-color: rgb(244, 244, 244);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
