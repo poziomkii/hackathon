@@ -43,7 +43,7 @@ function RadioCard(props) {
   );
 }
 
-function MiniGameWhatIsGS() {
+function MiniGameWhatIsGS(props) {
   const [points, setPoints] = useState(0);
   const [answer, setAnswer] = useState();
   const [correctAnswer, setCorrectAnswer] = useState();
@@ -93,9 +93,17 @@ function MiniGameWhatIsGS() {
       {correctAnswer === false && (
         <Alert status="info" variant="subtle">
           <AlertIcon />
-          Nice try! But Goldman Sachs has offices in all those countries.
+          Nice try! But Goldman Sachs is an American multinational investment bank and financial services company.
         </Alert>
       )}
+      {(correctAnswer || correctAnswer === false) && <Button
+        width={[100, 200, 350]}
+        size="lg"
+        colorScheme="blue"
+        onClick={() => props.handleMiniGame()}
+      >
+        Next
+      </Button>}
     </div>
   );
 }
