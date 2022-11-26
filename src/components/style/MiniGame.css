@@ -13,7 +13,12 @@
     flex-direction: row;
     flex-wrap: wrap;
     gap: 2em;
-    width: 50em;
+    padding-left: 25em;
+    padding-right: 25em;
+}
+
+.technologies {
+    padding: 5em;
 }
 
 .countries {
@@ -48,6 +53,23 @@
 }
 @media screen and (max-width: 100em) {
     .countries .chakra-stack {
+        padding-left: 5em;
+        padding-right: 5em;
+    }
+}
+
+@media screen and (max-width: 200em) {
+    .technologies {
+        gap: 1em;
+    }
+    .technologies .chakra-stack {
+        gap: 2em;
+        padding-left: 10em;
+        padding-right: 10em;
+    }
+}
+@media screen and (max-width: 100em) {
+    .technologies .chakra-stack {
         padding-left: 5em;
         padding-right: 5em;
     }
