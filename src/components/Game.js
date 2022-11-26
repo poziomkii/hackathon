@@ -39,13 +39,13 @@ class Game extends React.Component {
           handleLastName={(event) => this.handleLastName(event)} 
           handleNameForm={() => this.handleNameForm()}
           />,
-      () => <MiniGameWhatIsGS stage={this.state.stage} onClick={() => this.nextStage()}></MiniGameWhatIsGS>,
+      () => <MiniGameWhatIsGS stage={this.state.stage} handleMiniGame={() => this.nextStage()}/>,
       // wykształcenie formularz
-      () => <MiniGameCountries stage={this.state.stage} onClick={() => this.nextStage()}></MiniGameCountries>,
+      () => <MiniGameCountries stage={this.state.stage} handleMiniGame={() => this.nextStage()}/>,
       // metryczka formularz
-      () => <MiniGameColor stage={this.state.stage} onClick={() => this.nextStage()}></MiniGameColor>,
+      () => <MiniGameColor stage={this.state.stage} handleMiniGame={() => this.nextStage()}/>,
       // mail formularz
-      () => <MiniGameTechnologies stage={this.state.stage} onClick={() => this.nextStage()}></MiniGameTechnologies>,
+      () => <MiniGameTechnologies stage={this.state.stage} handleMiniGame={() => this.nextStage()}/>,
       // submit
       //wynik
       () => <EndScreen stage={this.state.stage} onClick={() => this.nextStage()}></EndScreen>,

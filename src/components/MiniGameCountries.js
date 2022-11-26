@@ -43,7 +43,7 @@ function CheckboxCard(props) {
   );
 }
 
-function MiniGameCountries() {
+function MiniGameCountries(props) {
   const [answer, setAnswer] = useState([]);
   const [points, setPoints] = useState(0);
   const [correctAnswer, setCorrectAnswer] = useState();
@@ -128,6 +128,16 @@ function MiniGameCountries() {
           <AlertIcon />
           Nice try! But Goldman Sachs has offices in all those countries.
         </Alert>
+      )}
+      {(correctAnswer || correctAnswer === false) && (
+        <Button
+          width={[100, 200, 350]}
+          size="lg"
+          colorScheme="blue"
+          onClick={() => props.handleMiniGame()}
+        >
+          Next
+        </Button>
       )}
     </div>
   );

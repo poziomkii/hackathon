@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import {
   Heading,
   Box,
+  Button,
   useCheckbox,
   useCheckboxGroup,
   Stack,
@@ -40,7 +41,8 @@ function CheckboxCard(props) {
   );
 }
 
-function MiniGameTechnologies() {
+function MiniGameTechnologies(props) {
+  const [submitted, setSubmitted] = useState(false);
   const [points, setPoints] = useState(0);
   const options = [
     "Java",
@@ -74,6 +76,26 @@ function MiniGameTechnologies() {
           );
         })}
       </Stack>
+      {!submitted && (
+        <Button
+          colorScheme="blue"
+          variant="outline"
+          className="button"
+          onClick={setSubmitted(true)}
+        >
+          Check
+        </Button>
+      )}
+      {submitted && (
+        <Button
+          width={[100, 200, 350]}
+          size="lg"
+          colorScheme="blue"
+          onClick={() => props.handleMiniGame()}
+        >
+          Next
+        </Button>
+      )}
     </div>
   );
 }
