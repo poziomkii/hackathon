@@ -1,6 +1,7 @@
 import "./style/Game.css";
 import StartScreen from "./StartScreen.js"
 import NameForm from "./NameForm.js";
+import EducationForm from "./EducationForm.js";
 import React from "react";
 import {
   Heading,
@@ -12,6 +13,7 @@ import MiniGameCountries from "./MiniGameCountries";
 import MiniGameColor from "./MiniGameColor";
 import MiniGameTechnologies from "./MiniGameTechnologies";
 import EndScreen from "./EndScreen";
+import MetricsForm from "./MetricsForm";
 
 class Game extends React.Component {
   constructor(props) {
@@ -20,8 +22,16 @@ class Game extends React.Component {
       stage: 0,
       score: 0,
       form: {
-        first_name: "",
-        last_name: "",
+        first_name: null,
+        last_name: null,
+        university: null,
+        field: null,
+        degree: null,
+        grad_month: null,
+        grad_year: null,
+        further_education: null,
+        gender: null,
+        ethnicity: null,
       }
     };
   }
@@ -36,15 +46,21 @@ class Game extends React.Component {
     const stages = [
       () => <StartScreen stage={this.state.stage} onClick={() => this.nextStage()}></StartScreen>,
       () => <NameForm
-        handleFirstName={(event) => this.handleFirstName(event)}
-        handleLastName={(event) => this.handleLastName(event)}
-        handleNameForm={() => this.handleNameForm()}
+        handleChange={(event) => this.handleChange(event)}
+        validateNameForm={() => this.validateNameForm()}
       />,
-      () => <MiniGameWhatIsGS handleMiniGame={() => this.nextStage()}></MiniGameWhatIsGS>,
-      // wykształcenie formularz
-      () => <MiniGameCountries handleMiniGame={() => this.nextStage()}></MiniGameCountries>,
-      // metryczka formularz
-      () => <MiniGameColor handleMiniGame={(delta) => {this.setState({...this.state, score: this.state.score + delta}, this.nextStage)}}></ MiniGameColor>,
+      () => <MiniGameWhatIsGS stage={this.state.stage} handleMiniGame={() => this.nextStage()}></MiniGameWhatIsGS>,
+      () => <EducationForm
+        handleChange={(event) => this.handleChange(event)}
+        handleNumber={(name, event) => this.handleNumber(name, event)}
+        validateEducationForm={() => this.validateEducationForm()}
+      />,
+      () => <MiniGameCountries stage={this.state.stage} handleMiniGame={() => this.nextStage()}></MiniGameCountries>,
+      () => <MetricsForm
+        handleChange={(event) => this.handleChange(event)}
+        validateMetricsForm={() => this.validateMetricsForm()}
+      />,
+      () => <MiniGameColor onClick={(c) => this.handleGuessColor(c)}></ MiniGameColor>,
       // mail formularz
       () => <MiniGameTechnologies handleMiniGame={() => this.nextStage()}></MiniGameTechnologies>,
       // submit
@@ -68,26 +84,46 @@ class Game extends React.Component {
     );
   }
 
-  handleFirstName(event) {
-    const stage = this.state.stage;
-    const form = this.state.form;
-    form.first_name = event.target.value;
+  handleNumber(name, event) {
     this.setState({
-      stage: stage,
-      form: form,
+      form: {
+        ...this.state.form,
+        [name]: event,
+      }
     });
   }
-  handleLastName(event) {
-    const stage = this.state.stage;
-    const form = this.state.form;
-    form.last_name = event.target.value;
+
+  handleChange(event) {
+    console.log(event);
+    const name = event.target.name;
+    const value = event.target.value;
     this.setState({
-      stage: stage,
-      form: form,
+      form: {
+        ...this.state.form,
+        [name]: value,
+      }
     });
+  } 
+
+  validateNameForm() {
+    if (!(this.state.form.first_name && this.state.form.last_name)) {
+      alert("Please fill the form properly!");
+      return;
+    }
+    this.nextStage();
   }
-  handleNameForm() {
-    if ((!this.state.form.first_name) || (!this.state.form.last_name)) {
+  validateEducationForm() {
+    if (!(this.state.form.university && this.state.form.field
+      && this.state.form.degree && this.state.form.grad_month
+      && this.state.form.grad_year)) {
+      alert("Please fill the form properly!");
+      return;
+    }
+    this.nextStage();
+  }
+  
+  validateMetricsForm() {
+    if (!(this.state.form.gender && this.state.form.ethnicity)) {
       alert("Please fill the form properly!");
       return;
     }
