@@ -16,6 +16,10 @@
     width: 50em;
 }
 
+.countries {
+    padding: 5em;
+}
+
 .countries .chakra-stack {
     display: flex;
     justify-content: space-between;
@@ -23,10 +27,63 @@
     flex-direction: row;
     flex-wrap: wrap;
     gap: 2em;
-    width: 80em;
+    padding-left: 25em;
+    padding-right: 25em;
 }
 
 .countries .chakra-button {
     width: 15em;
     margin-top: 5em;
+}
+
+@media screen and (max-width: 200em) {
+    .countries {
+        gap: 1em;
+    }
+    .countries .chakra-stack {
+        gap: 2em;
+        padding-left: 10em;
+        padding-right: 10em;
+    }
+}
+@media screen and (max-width: 100em) {
+    .countries .chakra-stack {
+        padding-left: 5em;
+        padding-right: 5em;
+    }
+}
+
+.mini-game-color {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    gap: 1em;
+    height: 100%;
+    padding-top: 0;
+}
+
+.mini-game-color .chakra-stack {
+    padding: 0;
+    gap: 3em;
+}
+
+
+.chakra-modal__body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chakra-modal__footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

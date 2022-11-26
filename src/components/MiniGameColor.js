@@ -1,3 +1,4 @@
+import "./style/MiniGame.css";
 import React from "react";
 import {
   Center,
@@ -9,7 +10,6 @@ import {
   Modal,
   ModalOverlay,
   ModalContent,
-  ModalHeader,
   ModalCloseButton,
   ModalBody,
   ModalFooter,
@@ -49,7 +49,7 @@ export default function MiniGameColor(props) {
   const delta = handleGuessColor(color);
 
   return (
-    <Center>
+    <Center className="mini-game-color">
       <VStack>
         <Heading>
           Pick the shade of blue that is in Goldman Sachs' logo.
@@ -65,29 +65,42 @@ export default function MiniGameColor(props) {
           dark
         />
         <Button
-          onClick={() => {
-            onOpen();
-          }}
+          width={[100, 150, 200]}
+          size="lg"
+          colorScheme="blue"
+          onClick={() => onOpen()}
         >
           Submit
         </Button>
 
-        <Modal onClose={onClose} isOpen={isOpen} isCentered>
+        <Modal
+          className="mini-game-color-modal"
+          onClose={onClose}
+          isOpen={isOpen}
+          isCentered
+        >
           <ModalOverlay />
           <ModalContent>
-            <ModalCloseButton />
             <ModalBody>
               <Image
-                boxSize={[200, 300, 400]}
+                boxSize={[100, 200, 300]}
                 src="https://brandpalettes.com/wp-content/uploads/2020/07/Goldman-Sachs-Logo-300x300.png?ezimgfmt=ng:webp/ngcb1"
-              ></Image>
-              <Box boxSize={[200, 300, 400]} bg={color.hex}></Box>
+              />
+              <Box boxSize={[100, 200, 300]} bg={color.hex}></Box>
               <Heading>Nice try!</Heading>
-              <Heading>+{delta}</Heading>
+              <Heading size="md">you've got +{delta} points</Heading>
+              <Button
+                width={[100, 200, 200]}
+                size="lg"
+                colorScheme="blue"
+                onClick={() => {
+                  onClose();
+                  props.handleMiniGame(delta);
+                }}
+              >
+                Next question
+              </Button>
             </ModalBody>
-            <ModalFooter>
-              <Button onClick={() => {onClose(); props.handleMiniGame(delta)}}>Next question</Button>
-            </ModalFooter>
           </ModalContent>
         </Modal>
       </VStack>

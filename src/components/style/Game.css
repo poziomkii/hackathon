@@ -25,3 +25,11 @@
     justify-content: center;
     align-items: center;
 }
+
+@media screen and (max-width: 50em) {
+    .game-progress {
+        justify-content: center;
+        padding: 0;
+        padding-bottom: 3em;
+    }
+}
