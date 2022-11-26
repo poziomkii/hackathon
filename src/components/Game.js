@@ -60,11 +60,9 @@ class Game extends React.Component {
         handleChange={(event) => this.handleChange(event)}
         validateMetricsForm={() => this.validateMetricsForm()}
       />,
-      () => <MiniGameColor onClick={(c) => this.handleGuessColor(c)}></ MiniGameColor>,
-      // mail formularz
+      () => <MiniGameColor handleMiniGame={(delta) => {this.setState({...this.state, score: this.state.score + delta}, this.nextStage)}}/>,
       () => <MiniGameTechnologies handleMiniGame={() => this.nextStage()}></MiniGameTechnologies>,
-      // submit
-      //wynik
+      // mail + submit
       () => <EndScreen score={this.state.score}></EndScreen>,
     ]
 
