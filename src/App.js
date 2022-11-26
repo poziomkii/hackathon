@@ -1,13 +1,12 @@
-import './App.css';
-import { ChakraProvider } from '@chakra-ui/react'
+import "./App.css";
+import Game from "./components/Game.js";
+import { ChakraProvider } from "@chakra-ui/react";
 
 function App() {
-  return (    
+  return (
     <ChakraProvider>
       <div className="App">
-        <header className="App-header">
-          <p>Super app</p>
-        </header>
+        <Game/>
       </div>
     </ChakraProvider>
   );
