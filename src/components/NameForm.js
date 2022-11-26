@@ -8,22 +8,24 @@ class NameForm extends React.Component {
     return (
       <Box w={[500, 1000]} className="form">
         <Input
+          name="first_name"
           width={[100, 200, 350]}
           color="blue.600"
           placeholder="First name"
-          onChange={(event) => this.props.handleFirstName(event)}
+          onChange={(event) => this.props.handleChange(event)}
         />
         <Input
+          name="last_name"
           width={[100, 200, 350]}
           color="blue.600"
           placeholder="Last name"
-          onChange={(event) => this.props.handleLastName(event)}
+          onChange={(event) => this.props.handleChange(event)}
         />
         <Button
           width={[100, 200, 350]}
           size="lg"
           colorScheme="blue"
-          onClick={() => this.props.handleNameForm()}
+          onClick={() => this.props.validateNameForm()}
         >
           Next
         </Button>
