@@ -26,8 +26,8 @@ class MailForm extends React.Component {
             >
           <option value="Friends recommendation">Friends recommendation</option>
           <option value="University event">University event</option>
-          <option value="Nice free gadgets">University event</option>
-          <option value="Other">University event</option>
+          <option value="Nice free gadgets">Nice free gadgets</option>
+          <option value="Other">Other</option>
         </Select>
         <Button
           width={[100, 200, 350]}
