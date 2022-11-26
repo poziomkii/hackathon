@@ -96,6 +96,14 @@ function MiniGameWhatIsGS() {
           Nice try! But Goldman Sachs has offices in all those countries.
         </Alert>
       )}
+      {(correctAnswer || correctAnswer === false) && <Button
+        width={[100, 200, 350]}
+        size="lg"
+        colorScheme="blue"
+        onClick={() => this.props.handleMiniGame()}
+      >
+        Next
+      </Button>}
     </div>
   );
 }

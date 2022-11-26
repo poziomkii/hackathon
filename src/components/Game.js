@@ -58,7 +58,7 @@ class Game extends React.Component {
         </div>
         <div className="game-progress">
           <CircularProgress size='3em' value={this.state.stage / stages.length * 100} color="blue.600">
-            <CircularProgressLabel className='progress-label'>{this.state.stage / stages.length * 100}%</CircularProgressLabel>
+            <CircularProgressLabel className='progress-label'>{Math.floor(this.state.stage / stages.length * 100)}%</CircularProgressLabel>
           </CircularProgress>
         </div>
       </div>
