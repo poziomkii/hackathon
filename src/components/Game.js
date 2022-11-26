@@ -16,7 +16,9 @@ class Game extends React.Component {
     return (
       <div className="game">
         <Heading>Let's get to know each other :)</Heading>
-        <div className="game-body">{/* body */}</div>
+        <div className="game-body">
+          {/* body */}
+        </div>
         <div className="game-progress">
           <CircularProgress size='3em' value={40} color="blue.400">
             <CircularProgressLabel className='progress-label'>40%</CircularProgressLabel>
