@@ -1,5 +1,6 @@
 import "./style/Game.css";
 import Start from "./Start.js"
+import NameForm from "./NameForm.js";
 import React from "react";
 import {
   Heading,
@@ -12,6 +13,10 @@ class Game extends React.Component {
     super(props);
     this.state = {
       stage: 0,
+      form: {
+        first_name: "",
+        last_name: "",
+      }
     };
   }
 
@@ -24,7 +29,11 @@ class Game extends React.Component {
   render() {
     const stages = [
       () => <Start stage={this.state.stage} onClick={() => this.nextStage()}></Start>,
-      () => <Start stage={this.state.stage} onClick={() => this.nextStage()}></Start>,
+      () => <NameForm
+          handleFirstName={(event) => this.handleFirstName(event)}
+          handleLastName={(event) => this.handleLastName(event)} 
+          handleNameForm={() => this.handleNameForm()}
+          />,
       () => <Start stage={this.state.stage} onClick={() => this.nextStage()}></Start>,
       () => <Start stage={this.state.stage} onClick={() => this.nextStage()}></Start>,
     ]
@@ -41,6 +50,32 @@ class Game extends React.Component {
         </div>
       </div>
     );
+  }
+
+  handleFirstName(event) {
+    const stage = this.state.stage;
+    const form = this.state.form;
+    form.first_name = event.target.value;
+    this.setState({
+      stage: stage,
+      form: form,
+    });
+  }
+  handleLastName(event) {
+    const stage = this.state.stage;
+    const form = this.state.form;
+    form.last_name = event.target.value;
+    this.setState({
+      stage: stage,
+      form: form,
+    });
+  }
+  handleNameForm() {
+    if ((!this.state.form.first_name) || (!this.state.form.last_name)) {
+      alert("Please fill the form properly!");
+      return;
+    }
+    this.nextStage();
   }
 }
 

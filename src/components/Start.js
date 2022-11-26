@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, ButtonGroup, Center, Text, VStack } from '@chakra-ui/react'
+import { Button, Center, Text, VStack } from '@chakra-ui/react'
 
 export default class Start extends React.Component {
     render() {
