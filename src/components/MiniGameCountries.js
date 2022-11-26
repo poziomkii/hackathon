@@ -85,7 +85,7 @@ function MiniGameCountries(props) {
 
   const checkAnswer = () => {
     setCorrectAnswer(answer.length === options.length);
-    setPoints((answer.length / options.length) * 100);
+    setPoints(Math.floor((answer.length / options.length) * 100));
   };
 
   const { getCheckboxProps } = useCheckboxGroup({
@@ -121,12 +121,14 @@ function MiniGameCountries(props) {
         <Alert status="success" variant="subtle">
           <AlertIcon />
           Congratulations! That's the correct answer
+          <Heading size="sm"> +{points} points </Heading>
         </Alert>
       )}
       {correctAnswer === false && (
         <Alert status="info" variant="subtle">
           <AlertIcon />
           Nice try! But Goldman Sachs has offices in all those countries.
+          <Heading size="sm"> +{points} points</Heading>
         </Alert>
       )}
       {(correctAnswer || correctAnswer === false) && (
@@ -134,7 +136,7 @@ function MiniGameCountries(props) {
           width={[100, 200, 350]}
           size="lg"
           colorScheme="blue"
-          onClick={() => props.handleMiniGame()}
+          onClick={() => props.handleMiniGame(points)}
         >
           Next
         </Button>

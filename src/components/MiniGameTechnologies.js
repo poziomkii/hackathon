@@ -92,7 +92,7 @@ function MiniGameTechnologies(props) {
           width={[100, 200, 350]}
           size="lg"
           colorScheme="blue"
-          onClick={() => props.handleMiniGame(answer)}
+          onClick={() => props.handleMiniGame(answer, points)}
         >
           Next
         </Button>

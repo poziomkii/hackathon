@@ -52,23 +52,23 @@ class Game extends React.Component {
         handleChange={(event) => this.handleChange(event)}
         validateNameForm={() => this.validateNameForm()}
       />,
-      () => <MiniGameWhatIsGS stage={this.state.stage} handleMiniGame={() => this.nextStage()}></MiniGameWhatIsGS>,
+      () => <MiniGameWhatIsGS stage={this.state.stage} handleMiniGame={(delta) => this.nextStageScored(delta)}></MiniGameWhatIsGS>,
       () => <EducationForm
         handleChange={(event) => this.handleChange(event)}
         handleNumber={(name, event) => this.handleNumber(name, event)}
         validateEducationForm={() => this.validateEducationForm()}
       />,
-      () => <MiniGameCountries stage={this.state.stage} handleMiniGame={() => this.nextStage()}></MiniGameCountries>,
+      () => <MiniGameCountries stage={this.state.stage} handleMiniGame={(delta) => this.nextStageScored(delta)}></MiniGameCountries>,
       () => <MetricsForm
         handleChange={(event) => this.handleChange(event)}
         validateMetricsForm={() => this.validateMetricsForm()}
       />,
-      () => <MiniGameColor handleMiniGame={(delta) => {this.setState({...this.state, score: this.state.score + delta}, this.nextStage)}}/>,
+      () => <MiniGameColor handleMiniGame={(delta) => { this.nextStageScored(delta) }} />,
       () => <MailForm
         handleChange={(event) => this.handleChange(event)}
         validateMailForm={() => this.validateMailForm()}
       />,
-      () => <MiniGameTechnologies handleMiniGame={(techs) => { this.setState({ ...this.state, technologies: techs }, this.nextStage) }}></MiniGameTechnologies>,
+      () => <MiniGameTechnologies handleMiniGame={(techs, delta) => { this.setState({ ...this.state, technologies: techs }, this.nextStageScored(delta)) }}></MiniGameTechnologies>,
       // mail + submit
       () => <EndScreen form={this.state} score={this.state.score}></EndScreen>,
     ]
@@ -96,6 +96,10 @@ class Game extends React.Component {
         [name]: event,
       }
     });
+  }
+
+  nextStageScored(delta) {
+    this.setState({ ...this.state, score: this.state.score + delta }, this.nextStage);
   }
 
   handleChange(event) {
