@@ -13,7 +13,6 @@ import MiniGameCountries from "./MiniGameCountries";
 import MiniGameColor from "./MiniGameColor";
 import MiniGameTechnologies from "./MiniGameTechnologies";
 import EndScreen from "./EndScreen";
-import ColorComparison from "./ColorComparison";
 import MetricsForm from "./MetricsForm";
 
 class Game extends React.Component {
