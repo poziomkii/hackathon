@@ -1,4 +1,5 @@
 import "./style/Game.css";
+import Start from "./Start.js"
 import React from "react";
 import {
   Heading,
@@ -31,7 +32,7 @@ class Game extends React.Component {
       <div className="game">
         <Heading>Let's get to know each other :)</Heading>
         <div className="game-body">
-          {/* body */}
+          {stages[this.state.stage]()}
         </div>
         <div className="game-progress">
           <CircularProgress size='3em' value={40} color="blue.400">
