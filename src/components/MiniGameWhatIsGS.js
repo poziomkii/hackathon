@@ -87,7 +87,8 @@ function MiniGameWhatIsGS(props) {
       {correctAnswer && (
         <Alert status="success" variant="subtle">
           <AlertIcon />
-          Congratulations! That's the correct answer
+          Congratulations! That's the correct answer!
+          <Heading size="sm">+{points} points</Heading>
         </Alert>
       )}
       {correctAnswer === false && (
@@ -102,7 +103,7 @@ function MiniGameWhatIsGS(props) {
           width={[100, 200, 350]}
           size="lg"
           colorScheme="blue"
-          onClick={() => props.handleMiniGame()}
+          onClick={() => props.handleMiniGame(points)}
         >
           Next
         </Button>
