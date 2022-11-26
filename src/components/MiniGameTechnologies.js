@@ -44,7 +44,7 @@ function CheckboxCard(props) {
 function MiniGameTechnologies(props) {
   const [answer, setAnswer] = useState([]);
   const [submitted, setSubmitted] = useState(false);
-  const [points, setPoints] = useState(0);
+  const [points] = useState(0);
   const options = [
     "Java",
     "Spring",
