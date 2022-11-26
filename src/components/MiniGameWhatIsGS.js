@@ -93,17 +93,20 @@ function MiniGameWhatIsGS(props) {
       {correctAnswer === false && (
         <Alert status="info" variant="subtle">
           <AlertIcon />
-          Nice try! But Goldman Sachs is an American multinational investment bank and financial services company.
+          Nice try! But Goldman Sachs is an American multinational investment
+          bank and financial services company.
         </Alert>
       )}
-      {(correctAnswer || correctAnswer === false) && <Button
-        width={[100, 200, 350]}
-        size="lg"
-        colorScheme="blue"
-        onClick={() => props.handleMiniGame()}
-      >
-        Next
-      </Button>}
+      {(correctAnswer || correctAnswer === false) && (
+        <Button
+          width={[100, 200, 350]}
+          size="lg"
+          colorScheme="blue"
+          onClick={() => props.handleMiniGame()}
+        >
+          Next
+        </Button>
+      )}
     </div>
   );
 }
