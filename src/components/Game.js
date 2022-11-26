@@ -60,10 +60,10 @@ class Game extends React.Component {
         handleChange={(event) => this.handleChange(event)}
         validateMetricsForm={() => this.validateMetricsForm()}
       />,
-      () => <MiniGameColor handleMiniGame={(delta) => {this.setState({...this.state, score: this.state.score + delta}, this.nextStage)}}/>,
-      () => <MiniGameTechnologies handleMiniGame={() => this.nextStage()}></MiniGameTechnologies>,
+      () => <MiniGameColor handleMiniGame={(delta) => { this.setState({ ...this.state, score: this.state.score + delta }, this.nextStage) }} />,
+      () => <MiniGameTechnologies handleMiniGame={(techs) => { this.setState({ ...this.state, technologies: techs }, this.nextStage) }}></MiniGameTechnologies>,
       // mail + submit
-      () => <EndScreen score={this.state.score}></EndScreen>,
+      () => <EndScreen form={this.state} score={this.state.score}></EndScreen>,
     ]
 
     const progressPercentage = Math.floor((this.state.stage) / (stages.length - 1) * 100)
@@ -101,7 +101,7 @@ class Game extends React.Component {
         [name]: value,
       }
     });
-  } 
+  }
 
   validateNameForm() {
     if (!(this.state.form.first_name && this.state.form.last_name)) {
@@ -119,7 +119,7 @@ class Game extends React.Component {
     }
     this.nextStage();
   }
-  
+
   validateMetricsForm() {
     if (!(this.state.form.gender && this.state.form.ethnicity)) {
       alert("Please fill the form properly!");

@@ -42,6 +42,7 @@ function CheckboxCard(props) {
 }
 
 function MiniGameTechnologies(props) {
+  const [answer, setAnswer] = useState([]);
   const [submitted, setSubmitted] = useState(false);
   const [points, setPoints] = useState(0);
   const options = [
@@ -60,7 +61,7 @@ function MiniGameTechnologies(props) {
   const { getCheckboxProps } = useCheckboxGroup({
     name: "answer",
     defaultValue: "",
-    onChange: console.log,
+    onChange: setAnswer,
   });
 
   return (
@@ -91,7 +92,7 @@ function MiniGameTechnologies(props) {
           width={[100, 200, 350]}
           size="lg"
           colorScheme="blue"
-          onClick={() => props.handleMiniGame()}
+          onClick={() => props.handleMiniGame(answer)}
         >
           Next
         </Button>
