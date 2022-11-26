@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from '@chakra-ui/react'
 import { Select } from '@chakra-ui/react'
 import { Stack } from '@chakra-ui/react'
+import { Radio, RadioGroup } from '@chakra-ui/react'
 import {
     NumberInput,
     NumberInputField,
@@ -51,6 +52,19 @@ class EducationForm extends React.Component {
                         </NumberInputStepper>
                     </NumberInput>
                 </Stack>
+                <div>
+                <div>Do you plan further education?</div>
+                <RadioGroup onChange={(event) => this.props.handleNumber('further_education', event)}>
+                    <Stack spacing={5} direction='row'>
+                        <Radio colorScheme='green' value='Yes'>
+                        Yes
+                        </Radio>
+                        <Radio colorScheme='red' value='No'>
+                        No
+                        </Radio>
+                    </Stack>
+                </RadioGroup>
+            </div>
             <div><Button
                 onClick={() =>this.props.validateEducationForm()}>
                 Next

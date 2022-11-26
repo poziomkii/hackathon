@@ -14,6 +14,7 @@ import MiniGameColor from "./MiniGameColor";
 import MiniGameTechnologies from "./MiniGameTechnologies";
 import EndScreen from "./EndScreen";
 import ColorComparison from "./ColorComparison";
+import MetricsForm from "./MetricsForm";
 
 class Game extends React.Component {
   constructor(props) {
@@ -29,6 +30,9 @@ class Game extends React.Component {
         degree: null,
         grad_month: null,
         grad_year: null,
+        further_education: null,
+        gender: null,
+        ethnicity: null,
       }
     };
   }
@@ -53,7 +57,10 @@ class Game extends React.Component {
         validateEducationForm={() => this.validateEducationForm()}
       />,
       () => <MiniGameCountries stage={this.state.stage} handleMiniGame={() => this.nextStage()}></MiniGameCountries>,
-      // metryczka formularz
+      () => <MetricsForm
+        handleChange={(event) => this.handleChange(event)}
+        validateMetricsForm={() => this.validateMetricsForm()}
+      />,
       () => <MiniGameColor onClick={(c) => this.handleGuessColor(c)}></ MiniGameColor>,
       () => <ColorComparison delta={this.state.scoreDelta} guessedColor={this.state.guessedColor} onClick={() => this.nextStage()}></ColorComparison>,
       // mail formularz
@@ -89,6 +96,7 @@ class Game extends React.Component {
   }
 
   handleChange(event) {
+    console.log(event);
     const name = event.target.name;
     const value = event.target.value;
     this.setState({
@@ -110,6 +118,13 @@ class Game extends React.Component {
     if (!(this.state.form.university && this.state.form.field
       && this.state.form.degree && this.state.form.grad_month
       && this.state.form.grad_year)) {
+      alert("Please fill the form properly!");
+      return;
+    }
+    this.nextStage();
+  }
+  validateMetricsForm() {
+    if (!(this.state.form.gender && this.state.form.ethnicity)) {
       alert("Please fill the form properly!");
       return;
     }
