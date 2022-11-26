@@ -130,32 +130,6 @@ class Game extends React.Component {
     }
     this.nextStage();
   }
-
-  handleGuessColor(color) {
-    const deltaR = color.rgb.r - goldmanBlue.r;
-    const deltaG = color.rgb.g - goldmanBlue.g;
-    const deltaB = color.rgb.b - goldmanBlue.b;
-    let delta = Math.floor((perfectGoldmanPayoff - (
-      deltaR * deltaR +
-      deltaG * deltaG +
-      deltaB * deltaB
-    ) * 8) / perfectGoldmanPayoff * 100);
-
-    if (delta < 0) {
-      delta = 0
-    }
-
-
-    const newScore = this.state.score + delta;
-
-    const old = this.state;
-    this.setState({
-      guessedColor: color,
-      scoreDelta: delta,
-      score: newScore,
-      stage: old.stage,
-    }, this.nextStage);
-  }
 }
 
 export default Game;
