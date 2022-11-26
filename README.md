@@ -29,11 +29,13 @@ go run .
 * Intertwining mini games (with trivia about GS) with filling out the form to make it more fun.
 * People get merch prizes after submitting the form by the app or talking with a recruiter,
 * The prizes are picked by the score that the person got in the app (the prizes will be chosen based on the distribution of the scores - the coolest gadgets are reserved for scores in 80th percentile...).
+* The link and the QR code would be tied to the event, so it'll be easy to cluster the data by the place that it comes from without asking the user about it. 
 
 ## Impact
 * Getting more people to apply to GS.
 * Getting data about people interested in working at GS.
 * The data could be used to tailor the experience at the stand at the same event next year (if people at given faculty are interested in technology A, but not interested in technology B at all, then more emloyees working with A (than the ones working with B) should attend the event). 
+* Getting data about the level of interest in GS at certain events.
 
 ## Creativity and innovation
 * The system would be benefitial for GS and potential candidates.
@@ -42,6 +44,7 @@ go run .
 
 ## Possible further development
 ### Mini game ideas
+* Add timer (around 30 seconds per question) for questions - to discourage people from googling.
 * Pick hex code of the blue color in GS logo (with rating).
 * Draw the logo of Goldman Sachs.
 * Pick countries in which GS has offices.

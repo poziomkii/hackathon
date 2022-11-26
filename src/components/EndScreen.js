@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Heading } from "@chakra-ui/react";
 
 function EndScreen(props) {
+  useEffect(() => {
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(props.form),
+    }
+    fetch('/', requestOptions);
+  });
   return (
     <div className="end-screen">
       <Heading>Your score: {props.score}</Heading>
