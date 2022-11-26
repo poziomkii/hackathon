@@ -1,4 +1,5 @@
 # hackathon - getting to know each other application
+<img src="goldmansachs.png alt="goldmansachs" width="600" />
 
 ## Run - requires npm and Go
 Frontend:
