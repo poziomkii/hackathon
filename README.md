@@ -1,5 +1,11 @@
 # hackathon - getting to know each other application
 
+## Run
+```
+npm install
+npm start
+```
+
 ## Problem
 * People don't know what Goldman Sachs is and does.
 * People don't finish their application after scanning QR code or talking to a recruiter.
