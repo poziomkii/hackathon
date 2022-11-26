@@ -1,0 +1,32 @@
+.mini-game-screen {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.technologies .chakra-stack {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2em;
+    width: 50em;
+}
+
+.countries .chakra-stack {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2em;
+    width: 80em;
+}
+
+.countries .chakra-button {
+    width: 15em;
+    margin-top: 5em;
+}
