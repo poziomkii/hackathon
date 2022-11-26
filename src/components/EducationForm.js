@@ -45,12 +45,11 @@ class EducationForm extends React.Component {
           <option value="Masters">Masters</option>
           <option value="Doctorate">Doctorate</option>
         </Select>
-        <Heading size="sm">Graduation date</Heading>
-        <Stack shouldWrapChildren direction="row">
+        <Heading size="sm">Graduation month and year</Heading>
+        <Stack shouldWrapChildren direction="column">
           <NumberInput
             min={1}
             max={12}
-            defaultValue={1}
             onChange={(event) => this.props.handleNumber("grad_month", event)}
           >
             <NumberInputField />
@@ -61,7 +60,6 @@ class EducationForm extends React.Component {
           </NumberInput>
           <NumberInput
             min={2020}
-            defaultValue={2022}
             onChange={(event) => this.props.handleNumber("grad_year", event)}
           >
             <NumberInputField />
