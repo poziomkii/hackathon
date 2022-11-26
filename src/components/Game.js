@@ -14,6 +14,7 @@ import MiniGameColor from "./MiniGameColor";
 import MiniGameTechnologies from "./MiniGameTechnologies";
 import EndScreen from "./EndScreen";
 import MetricsForm from "./MetricsForm";
+import MailForm from "./MailForm"
 
 class Game extends React.Component {
   constructor(props) {
@@ -32,6 +33,8 @@ class Game extends React.Component {
         further_education: null,
         gender: null,
         ethnicity: null,
+        email: null,
+        reason: null,
       }
     };
   }
@@ -60,7 +63,11 @@ class Game extends React.Component {
         handleChange={(event) => this.handleChange(event)}
         validateMetricsForm={() => this.validateMetricsForm()}
       />,
-      () => <MiniGameColor handleMiniGame={(delta) => { this.setState({ ...this.state, score: this.state.score + delta }, this.nextStage) }} />,
+      () => <MiniGameColor handleMiniGame={(delta) => {this.setState({...this.state, score: this.state.score + delta}, this.nextStage)}}/>,
+      () => <MailForm
+        handleChange={(event) => this.handleChange(event)}
+        validateMailForm={() => this.validateMailForm()}
+      />,
       () => <MiniGameTechnologies handleMiniGame={(techs) => { this.setState({ ...this.state, technologies: techs }, this.nextStage) }}></MiniGameTechnologies>,
       // mail + submit
       () => <EndScreen form={this.state} score={this.state.score}></EndScreen>,
@@ -110,6 +117,7 @@ class Game extends React.Component {
     }
     this.nextStage();
   }
+
   validateEducationForm() {
     if (!(this.state.form.university && this.state.form.field
       && this.state.form.degree && this.state.form.grad_month
@@ -122,6 +130,14 @@ class Game extends React.Component {
 
   validateMetricsForm() {
     if (!(this.state.form.gender && this.state.form.ethnicity)) {
+      alert("Please fill the form properly!");
+      return;
+    }
+    this.nextStage();
+  }
+
+  validateMailForm() {
+    if (!(this.state.form.email && this.state.form.reason)) {
       alert("Please fill the form properly!");
       return;
     }
