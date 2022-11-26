@@ -54,7 +54,7 @@ class Game extends React.Component {
       () => <EndScreen score={this.state.score}></EndScreen>,
     ]
 
-    const progressPercentage = Math.floor((this.state.stage + 1) / stages.length * 100)
+    const progressPercentage = Math.floor((this.state.stage) / (stages.length - 1) * 100)
     return (
       <div className="game">
         <Heading as='h4' size='md'>Let's get to know each other :)</Heading>

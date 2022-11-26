@@ -2,7 +2,6 @@ import React from "react";
 import { Center, Button, VStack, Image, Box, Heading } from '@chakra-ui/react'
 import { ColorPicker, useColor } from "react-color-palette";
 import "react-color-palette/lib/css/styles.css";
-import "./style/ColorPicker.css"
 
 export default function MiniGameColor(props) {
   const [color, setColor] = useColor("hex", "#0033CC");
