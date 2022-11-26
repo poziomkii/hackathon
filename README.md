@@ -1,9 +1,17 @@
 # hackathon - getting to know each other application
 
-## Run
+## Run - requires npm and Go
+Frontend:
 ```
 npm install
 npm start
+```
+
+Backend:
+```
+cd src/backend
+go mod tidy
+go run .
 ```
 
 ## Problem
