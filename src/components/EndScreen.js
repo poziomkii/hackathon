@@ -1,4 +1,3 @@
-import "./style/Game.css";
 import React from "react";
 import { Heading } from "@chakra-ui/react";
 
