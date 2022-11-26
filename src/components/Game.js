@@ -1,6 +1,7 @@
 import "./style/Game.css";
 import Start from "./Start.js"
 import NameForm from "./NameForm.js";
+import EducationForm from "./EducationForm.js";
 import React from "react";
 import {
   Heading,
@@ -14,8 +15,13 @@ class Game extends React.Component {
     this.state = {
       stage: 0,
       form: {
-        first_name: "",
-        last_name: "",
+        first_name: null,
+        last_name: null,
+        university: null,
+        field: null,
+        degree: null,
+        grad_month: null,
+        grad_year: null,
       }
     };
   }
@@ -30,10 +36,14 @@ class Game extends React.Component {
     const stages = [
       () => <Start stage={this.state.stage} onClick={() => this.nextStage()}></Start>,
       () => <NameForm
-          handleFirstName={(event) => this.handleFirstName(event)}
-          handleLastName={(event) => this.handleLastName(event)} 
-          handleNameForm={() => this.handleNameForm()}
-          />,
+        handleChange={(event) => this.handleChange(event)}
+        validateNameForm={() => this.validateNameForm()}
+      />,
+      () => <EducationForm
+        handleChange={(event) => this.handleChange(event)}
+        handleNumber={(name, event) => this.handleNumber(name, event)}
+        validateEducationForm={() => this.validateEducationForm()}
+      />,
       () => <Start stage={this.state.stage} onClick={() => this.nextStage()}></Start>,
       () => <Start stage={this.state.stage} onClick={() => this.nextStage()}></Start>,
     ]
@@ -52,31 +62,43 @@ class Game extends React.Component {
     );
   }
 
-  handleFirstName(event) {
-    const stage = this.state.stage;
-    const form = this.state.form;
-    form.first_name = event.target.value;
+  handleNumber(name, event) {
     this.setState({
-      stage: stage,
-      form: form,
+      form: {
+        ...this.state.form,
+        [name]: event,
+      }
     });
   }
-  handleLastName(event) {
-    const stage = this.state.stage;
-    const form = this.state.form;
-    form.last_name = event.target.value;
+
+  handleChange(event) {
+    const name = event.target.name;
+    const value = event.target.value;
     this.setState({
-      stage: stage,
-      form: form,
+      form: {
+        ...this.state.form,
+        [name]: value,
+      }
     });
-  }
-  handleNameForm() {
-    if ((!this.state.form.first_name) || (!this.state.form.last_name)) {
+  } 
+
+  validateNameForm() {
+    if (!(this.state.form.first_name && this.state.form.last_name)) {
       alert("Please fill the form properly!");
       return;
     }
     this.nextStage();
   }
+  validateEducationForm() {
+    if (!(this.state.form.university && this.state.form.field
+      && this.state.form.degree && this.state.form.grad_month
+      && this.state.form.grad_year)) {
+      alert("Please fill the form properly!");
+      return;
+    }
+    this.nextStage();
+  }
+
 }
 
 export default Game;
