@@ -62,9 +62,8 @@ class Game extends React.Component {
         validateMetricsForm={() => this.validateMetricsForm()}
       />,
       () => <MiniGameColor onClick={(c) => this.handleGuessColor(c)}></ MiniGameColor>,
-      () => <ColorComparison delta={this.state.scoreDelta} guessedColor={this.state.guessedColor} onClick={() => this.nextStage()}></ColorComparison>,
       // mail formularz
-      () => <MiniGameTechnologies stage={this.state.stage} handleMiniGame={() => this.nextStage()}></MiniGameTechnologies>,
+      () => <MiniGameTechnologies handleMiniGame={() => this.nextStage()}></MiniGameTechnologies>,
       // submit
       //wynik
       () => <EndScreen score={this.state.score}></EndScreen>,
@@ -123,6 +122,7 @@ class Game extends React.Component {
     }
     this.nextStage();
   }
+  
   validateMetricsForm() {
     if (!(this.state.form.gender && this.state.form.ethnicity)) {
       alert("Please fill the form properly!");
@@ -156,13 +156,6 @@ class Game extends React.Component {
       stage: old.stage,
     }, this.nextStage);
   }
-
 }
 
 export default Game;
-const goldmanBlue = {
-  r: 107,
-  g: 150,
-  b: 195,
-}
-const perfectGoldmanPayoff = 255 * 255 * 3;
