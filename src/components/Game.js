@@ -1,5 +1,5 @@
 import "./style/Game.css";
-import Start from "./Start.js"
+import StartScreen from "./StartScreen.js"
 import NameForm from "./NameForm.js";
 import React from "react";
 import {
@@ -7,7 +7,11 @@ import {
   CircularProgress,
   CircularProgressLabel,
 } from "@chakra-ui/react";
+import MiniGameWhatIsGS from "./MiniGameWhatIsGS";
 import MiniGameCountries from "./MiniGameCountries";
+import MiniGameColor from "./MiniGameColor";
+import MiniGameTechnologies from "./MiniGameTechnologies";
+import EndScreen from "./EndScreen";
 
 class Game extends React.Component {
   constructor(props) {
@@ -29,14 +33,22 @@ class Game extends React.Component {
 
   render() {
     const stages = [
-      () => <Start stage={this.state.stage} onClick={() => this.nextStage()}></Start>,
+      () => <StartScreen stage={this.state.stage} onClick={() => this.nextStage()}></StartScreen>,
       () => <NameForm
           handleFirstName={(event) => this.handleFirstName(event)}
           handleLastName={(event) => this.handleLastName(event)} 
           handleNameForm={() => this.handleNameForm()}
           />,
-      () => <Start stage={this.state.stage} onClick={() => this.nextStage()}></Start>,
-      () => <Start stage={this.state.stage} onClick={() => this.nextStage()}></Start>,
+      () => <MiniGameWhatIsGS stage={this.state.stage} onClick={() => this.nextStage()}></MiniGameWhatIsGS>,
+      // wykształcenie formularz
+      () => <MiniGameCountries stage={this.state.stage} onClick={() => this.nextStage()}></MiniGameCountries>,
+      // metryczka formularz
+      () => <MiniGameColor stage={this.state.stage} onClick={() => this.nextStage()}></MiniGameColor>,
+      // mail formularz
+      () => <MiniGameTechnologies stage={this.state.stage} onClick={() => this.nextStage()}></MiniGameTechnologies>,
+      // submit
+      //wynik
+      () => <EndScreen stage={this.state.stage} onClick={() => this.nextStage()}></EndScreen>,
     ]
     return (
       <div className="game">
@@ -45,8 +57,8 @@ class Game extends React.Component {
           {stages[this.state.stage]()}
         </div>
         <div className="game-progress">
-          <CircularProgress size='3em' value={40} color="blue.600">
-            <CircularProgressLabel className='progress-label'>40%</CircularProgressLabel>
+          <CircularProgress size='3em' value={this.state.stage / stages.length * 100} color="blue.600">
+            <CircularProgressLabel className='progress-label'>{this.state.stage / stages.length * 100}%</CircularProgressLabel>
           </CircularProgress>
         </div>
       </div>
