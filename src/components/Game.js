@@ -1,5 +1,6 @@
 import "./style/Game.css";
-import Start from "./StartScreen.js"
+import StartScreen from "./StartScreen.js"
+import NameForm from "./NameForm.js";
 import React from "react";
 import {
   Heading,
@@ -17,7 +18,10 @@ class Game extends React.Component {
     super(props);
     this.state = {
       stage: 0,
-      max_stage_num: 10,
+      form: {
+        first_name: "",
+        last_name: "",
+      }
     };
   }
 
@@ -29,8 +33,12 @@ class Game extends React.Component {
 
   render() {
     const stages = [
-      () => <Start stage={this.state.stage} onClick={() => this.nextStage()}></Start>,
-      // imię nazwisko formularz
+      () => <StartScreen stage={this.state.stage} onClick={() => this.nextStage()}></StartScreen>,
+      () => <NameForm
+          handleFirstName={(event) => this.handleFirstName(event)}
+          handleLastName={(event) => this.handleLastName(event)} 
+          handleNameForm={() => this.handleNameForm()}
+          />,
       () => <MiniGameWhatIsGS stage={this.state.stage} onClick={() => this.nextStage()}></MiniGameWhatIsGS>,
       // wykształcenie formularz
       () => <MiniGameCountries stage={this.state.stage} onClick={() => this.nextStage()}></MiniGameCountries>,
@@ -49,12 +57,38 @@ class Game extends React.Component {
           {stages[this.state.stage]()}
         </div>
         <div className="game-progress">
-          <CircularProgress size='3em' value={this.state.stage / this.state.max_stage_num} color="blue.600">
-            <CircularProgressLabel className='progress-label'>{this.state.stage / this.state.max_stage_num}%</CircularProgressLabel>
+          <CircularProgress size='3em' value={this.state.stage / stages.length * 100} color="blue.600">
+            <CircularProgressLabel className='progress-label'>{this.state.stage / stages.length * 100}%</CircularProgressLabel>
           </CircularProgress>
         </div>
       </div>
     );
+  }
+
+  handleFirstName(event) {
+    const stage = this.state.stage;
+    const form = this.state.form;
+    form.first_name = event.target.value;
+    this.setState({
+      stage: stage,
+      form: form,
+    });
+  }
+  handleLastName(event) {
+    const stage = this.state.stage;
+    const form = this.state.form;
+    form.last_name = event.target.value;
+    this.setState({
+      stage: stage,
+      form: form,
+    });
+  }
+  handleNameForm() {
+    if ((!this.state.form.first_name) || (!this.state.form.last_name)) {
+      alert("Please fill the form properly!");
+      return;
+    }
+    this.nextStage();
   }
 }
 
